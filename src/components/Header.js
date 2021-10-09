@@ -17,14 +17,13 @@ class Header extends Component{
     };
 
     handleChangeBookName = (e) => {
-        console.log(this.props)
         this.setState({ bookNameValue: e.target.value });
         this.setState({ bookNameError: this.handleError(e) });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e)
+
         if(!this.state.bookNameError && this.state.bookNameValue){
             // Передаём значения управляемых компонентов во внешний обработчик
                 this.props.onGetBooksInfo({

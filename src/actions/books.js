@@ -6,6 +6,20 @@ export function booksFetchDataSuccess(books){
     }
 }
 
+export function toggleIsFetching (isFetching) {
+    return{
+        type: "TOGGLE_IS_FETCHING",
+        isFetching
+    }
+
+}
+export function changeIsSearched (val){
+    return{
+        type: "CHANGE_IS_SEARCHED",
+        val
+    }
+}
+
 export function booksFetchData(url){
     return (dispatch)=>{
         fetch(url)
@@ -16,6 +30,7 @@ export function booksFetchData(url){
             return res.json();
         })
         .then(books => dispatch(booksFetchDataSuccess(books)))
+        .then(()=>dispatch(toggleIsFetching(false)))
         .catch((err) => {
             console.log(err); 
         })
