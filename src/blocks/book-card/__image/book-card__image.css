@@ -1,0 +1,7 @@
+.book-card__image{
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.5);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 160px;
+}

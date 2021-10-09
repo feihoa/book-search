@@ -1,0 +1,19 @@
+.header__select{
+    outline: none;
+    border: none;
+    margin-right: 20px;
+    width: 25%;
+    padding: 5px 0;
+    border-radius: 5px;
+}
+
+.header__select:last-of-type{
+    margin-right: 0px;
+
+}
+@media screen and (max-width: 535px) {
+    .header__select {
+        margin-right: 0px;
+        width: 70%;
+    }
+  }

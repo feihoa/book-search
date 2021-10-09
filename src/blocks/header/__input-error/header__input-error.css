@@ -1,0 +1,5 @@
+.header__input-error{
+    display: block;
+    color: rgb(255, 63, 63);
+    font-weight: 300;
+}
