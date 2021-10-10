@@ -3,8 +3,9 @@
 @import url(./blocks/main/main.css);
 @import url(./blocks/book-card/book-card.css);
 @import url(./blocks/books-list/books-list.css);
-@import url(./blocks/loader/loader.css);
 @import url(./blocks/btn/btn.css);
+@import url(./blocks/loader/loader.css);
+@import url(./blocks/loader-container/loader-container.css);
 
 
 

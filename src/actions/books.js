@@ -1,8 +1,26 @@
 export function booksFetchDataSuccess(books){
-
     return {
         type: "BOOKS_FETCH_DATA_SUCCESS",
-        books
+        books: books.items
+    }
+}
+export function totalBooksFetchDataSuccess(books){
+
+    return {
+        type: "TOTAL_BOOKS_FETCH_DATA_SUCCESS",
+        totalBooksItems: books.totalItems
+    }
+}
+export function incrementPageIndex(){
+
+    return {
+        type: "NEXT_PAGE",
+    }
+}
+export function resetState(){
+
+    return {
+        type: "RESET",
     }
 }
 
@@ -20,6 +38,7 @@ export function changeIsSearched (val){
     }
 }
 
+
 export function booksFetchData(url){
     return (dispatch)=>{
         fetch(url)
@@ -29,7 +48,10 @@ export function booksFetchData(url){
             }
             return res.json();
         })
-        .then(books => dispatch(booksFetchDataSuccess(books)))
+        .then(books => (
+            dispatch(booksFetchDataSuccess(books)),
+            dispatch(totalBooksFetchDataSuccess(books))     
+            ))
         .then(()=>dispatch(toggleIsFetching(false)))
         .catch((err) => {
             console.log(err); 

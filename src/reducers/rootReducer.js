@@ -1,7 +1,9 @@
 import { combineReducers } from "redux";
-import {books} from "./books"
+import {books} from "./books";
+import {form} from "./form";
 
 const rootReducer = combineReducers({
-    books
+    books,
+    form
 })
 export default rootReducer;

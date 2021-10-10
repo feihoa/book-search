@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 class Header extends Component{
 
 
@@ -10,7 +9,6 @@ class Header extends Component{
 
         this.state = {
             bookNameValue: "",
-            bookNameError:  "",
             bookCategoryValue: "all",
             bookSortingValue: "relevance",
         };
@@ -18,22 +16,17 @@ class Header extends Component{
 
     handleChangeBookName = (e) => {
         this.setState({ bookNameValue: e.target.value });
-        this.setState({ bookNameError: this.handleError(e) });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-
-        if(!this.state.bookNameError && this.state.bookNameValue){
             // Передаём значения управляемых компонентов во внешний обработчик
                 this.props.onGetBooksInfo({
                 search: this.state.bookNameValue,
                 category: this.state.bookCategoryValue,
-                order: this.state.bookSortingValue
+                order: this.state.bookSortingValue,
                 });
-            }else{
-                this.setState({ bookNameError: this.handleError(e) });
-            }
+            
     }
     handleChangeBookCategory = (e) => {
         this.setState({ bookCategoryValue: e.target.value });
@@ -41,14 +34,6 @@ class Header extends Component{
     handleChangeBookSorting = (e) => {
         this.setState({ bookSortingValue: e.target.value });
     }
-   
-    handleError = (e) => {
-        if (!e.target.value || e.target.value.length === 0) {
-            return 'Это обязательное поле';
-        } else {
-            return '';
-        }
-    };
 
     render(){
         return (
@@ -58,8 +43,6 @@ class Header extends Component{
                     <input id="search-input" type="text"
                     value={this.state.bookNameValue} onChange={this.handleChangeBookName} required name="bookName" 
                     className="header__input" placeholder=" Enter the book title"/>
-                    <br/>
-                    <span id="error-search-input" className="error input-error header__input-error">{this.state.bookNameError}</span>
                     <br/>
                     <label className="header__select-label">Categories</label>
                     <select className="header__select" onChange={this.handleChangeBookCategory} value={this.state.bookCategoryValue} name="bookCategory">
@@ -82,4 +65,5 @@ class Header extends Component{
         );
     }
 }
-export default Header;
+
+export default Header
