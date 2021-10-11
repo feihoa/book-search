@@ -5,7 +5,6 @@
 @import url(./__select-label/header__select-label.css);
 @import url(./__select/header__select.css);
 @import url(./__option/header__option.css);
-@import url(./__input-error/header__input-error.css);
 
 .header{
     display: flex;

@@ -4,6 +4,7 @@ const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const CHANGE_IS_SEARCHED = "CHANGE_IS_SEARCHED";
 const NEXT_PAGE = "NEXT_PAGE";
 const RESET = "RESET";
+
 let initialState = {
     books:[],
     index:0,
@@ -11,7 +12,6 @@ let initialState = {
     isFetching: false,
     isSearched:false,
 }
-
 
 export function books(state = initialState, action){
     switch(action.type){
