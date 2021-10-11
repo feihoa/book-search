@@ -9,9 +9,11 @@ class Main extends Component {
             <>
                 {
                 !this.props.isSearched ?
-                <div className="main__initial-message"><p>The books found will be displayed here</p></div> :
+                <div className="main__message"><p>The books found will be displayed here</p></div> :
+                this.props.err ?
+                <div className="main__message"><p>{this.props.err}</p></div> :
                 !this.props.totalItems ? 
-                <h3 className="main__results-not-found">{'No results found'}</h3> :
+                <h3 className="main__message">{'No results found'}</h3> :
                 <>
                     <div className="main__cards-container">
                         <h3 className="main__results-found">{this.props.totalItems === -1? 
@@ -20,9 +22,9 @@ class Main extends Component {
                         <div id="booksList" className="books-list root__section">
                             { this.props.books[0] && this.props.books.map((book) => {
                                 return  <Card 
-                                            book={book} 
-                                            key={book.etag} 
-                                            onCardClick={this.props.onCardClick} /> 
+                                    book={book} 
+                                    key={book.etag} 
+                                    onCardClick={this.props.onCardClick} /> 
                             })}
                         </div>
                     </div> 

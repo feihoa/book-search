@@ -11,6 +11,26 @@ export function totalBooksFetchDataSuccess(books){
         totalBooksItems: books.totalItems
     }
 }
+export function booksFetchDataFail(err){
+
+    return {
+        type: "BOOKS_FETCH_DATA_FAIL",
+        err
+    }
+}
+export function changeIsSearched (val){
+    return{
+        type: "CHANGE_IS_SEARCHED",
+        val
+    }
+}
+export function toggleIsFetching (isFetching) {
+    return{
+        type: "TOGGLE_IS_FETCHING",
+        isFetching
+    }
+
+}
 export function incrementPageIndex(){
 
     return {
@@ -24,37 +44,25 @@ export function resetState(){
     }
 }
 
-export function toggleIsFetching (isFetching) {
-    return{
-        type: "TOGGLE_IS_FETCHING",
-        isFetching
-    }
 
-}
-export function changeIsSearched (val){
-    return{
-        type: "CHANGE_IS_SEARCHED",
-        val
-    }
-}
+
 
 
 export function booksFetchData(url){
     return (dispatch)=>{
         fetch(url)
-        .then((res) => {
-            if(!res.ok){
-                throw new Error(res.statusText)
-            }
-            return res.json();
+        .then(res => res.ok ? res : Promise.reject(res))
+        .then(res=>res.json())
+        .then(books => {
+            dispatch(booksFetchDataSuccess(books))
+            dispatch(totalBooksFetchDataSuccess(books)) 
+            dispatch(booksFetchDataFail(''))   
         })
-        .then(books => (
-            dispatch(booksFetchDataSuccess(books)),
-            dispatch(totalBooksFetchDataSuccess(books))     
-            ))
         .then(()=>dispatch(toggleIsFetching(false)))
         .catch((err) => {
-            console.log(err); 
+            console.log(err)
+            dispatch(booksFetchDataFail(err))
+            dispatch(toggleIsFetching(false))
         })
     }
 

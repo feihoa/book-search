@@ -17,8 +17,8 @@ import {
 import {
   formChangeBookSearchValue, 
   formChangeBookCategoryValue, 
-  formChangeBookSortingValue} 
-  from  '../redux/actions/form';
+  formChangeBookSortingValue
+} from  '../redux/actions/form';
 import {setCardData} from  '../redux/actions/card';
 
 import Header from './Header';
@@ -27,6 +27,10 @@ import BookInfo from './BookInfo';
 
 
 class App extends Component {
+
+  clearRequest(req){
+    return (req.replace(/[\/#$%\^\*;{}=\_`~+&]/g," ")).trim();
+  }
 
   fetchBooks = (data) => {
     console.log(data)
@@ -37,10 +41,10 @@ class App extends Component {
   loadMore = () =>{
     this.props.isFetching(true)
     this.fetchBooks({
-      search:this.props.bookSearchValue, 
-      category:this.props.bookCategoryValue, 
-      order:this.props.bookSortingValue, 
-      index:this.props.incrementedIndex});
+      search: this.props.bookSearchValue, 
+      category: this.props.bookCategoryValue, 
+      order: this.props.bookSortingValue, 
+      index: this.props.incrementedIndex});
     this.props.incrementIndex()
   }
 
@@ -53,10 +57,10 @@ class App extends Component {
     this.props.isSearched(true)
     this.props.isFetching(true)
     this.fetchBooks({
-      search:this.props.bookSearchValue, 
-      category:this.props.bookCategoryValue, 
-      order:this.props.bookSortingValue, 
-      index:0});
+      search: this.clearRequest(this.props.bookSearchValue), 
+      category: this.props.bookCategoryValue, 
+      order: this.props.bookSortingValue, 
+      index: 0});
     this.props.incrementIndex()
   }
 
@@ -88,6 +92,7 @@ class App extends Component {
             <Main               
               isSearched={this.props.isSearch} 
               isFetching={this.props.isFetch} 
+              err={this.props.fetchErrMessage}
               totalItems={this.props.totalItems} 
               books={this.props.books} 
               index={this.props.incrementedIndex} 
@@ -123,6 +128,7 @@ console.log("state")
     books: state.books.books,
     incrementedIndex: state.books.index,
     reset: state.books.reset,
+    fetchErrMessage: state.books.err.message,
 
     bookSearchValue: state.form.bookSearchValue,
     bookCategoryValue: state.form.bookCategoryValue,
