@@ -29,12 +29,10 @@ import BookInfo from './BookInfo';
 class App extends Component {
 
   clearRequest(req){
-    return (req.replace(/[\/#$%\^\*;{}=\_`~+&]/g," ")).trim();
+    return (req.replace(/[<>\/#$%\^\*;{}=\_`~+&]/g," ")).trim();
   }
 
   fetchBooks = (data) => {
-    console.log(data)
-    console.log('data fetch app')
     this.props.fetchData(`https://www.googleapis.com/books/v1/volumes?q="${data.search}"+subject="${data.category}"&orderBy=${data.order}&maxResults=30&startIndex=${data.index}`)
   }
 
@@ -67,7 +65,7 @@ class App extends Component {
   handleCardClick = (card) => {
     this.props.setCardData(card);
     this.currentBookId = card.etag
-    this.props.history.push("/info/:" + this.currentBookId)
+    this.props.history.push("/book/:" + this.currentBookId)
     }
   handleClose = () => {
     this.props.history.push('/')
@@ -100,7 +98,7 @@ class App extends Component {
               onCardClick={this.handleCardClick}/> 
           </Route>
 
-          <Route history={history} exact path={"/info/:" + this.currentBookId}>
+          <Route history={history} exact path={"/book/:" + this.currentBookId}>
             {this.props.card.card.length !== 0 ? 
               <BookInfo book={this.props.card.card} onClose={this.handleClose}/> :
               <Redirect to="/" />

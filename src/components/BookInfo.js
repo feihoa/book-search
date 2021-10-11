@@ -16,7 +16,7 @@ class BookInfo extends Component{
                 <div className="book-info__details">
                     <p className="category book-card__category">{
                         this.props.book.volumeInfo.categories ? 
-                        this.props.book.volumeInfo.categories.reduce((str, category)=>{return str+', '+category}): 
+                        this.props.book.volumeInfo.categories.reduce((str, category)=> str+', '+category): 
                         ''
                     }/General
                     </p>
@@ -25,7 +25,7 @@ class BookInfo extends Component{
                     </h3>
                     <p className="book-card__author">{
                         this.props.book.volumeInfo.authors ? 
-                        this.props.book.volumeInfo.authors.reduce((str, autor)=>{return str+', '+autor}) : 
+                        this.props.book.volumeInfo.authors.reduce((str, autor)=> str+', '+autor) : 
                         ''
                     }
                     </p>

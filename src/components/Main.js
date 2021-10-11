@@ -1,42 +1,31 @@
 import React, {Component} from 'react';
-import Card from './Card';
+import CardsContainer from './CardsContainer';
 
 class Main extends Component {
 
     render(){
-
         return(
             <>
-                {
-                !this.props.isSearched ?
-                <div className="main__message"><p>The books found will be displayed here</p></div> :
-                this.props.err ?
-                <div className="main__message"><p>{this.props.err}</p></div> :
-                !this.props.totalItems ? 
-                <h3 className="main__message">{'No results found'}</h3> :
-                <>
-                    <div className="main__cards-container">
-                        <h3 className="main__results-found">{this.props.totalItems === -1? 
-                        '' : 
-                        `Found ${this.props.totalItems} results`} </h3>
-                        <div id="booksList" className="books-list root__section">
-                            { this.props.books[0] && this.props.books.map((book) => {
-                                return  <Card 
-                                    book={book} 
-                                    key={book.etag} 
-                                    onCardClick={this.props.onCardClick} /> 
-                            })}
-                        </div>
-                    </div> 
-                </>
-                }
+                <h3 className="main__message">{           
+                    !this.props.isSearched ?
+                    'The books found will be displayed here' :
+                    this.props.err ?
+                    this.props.err :
+                    !this.props.totalItems ? 
+                    'No results found' :
+                    this.props.totalItems === -1 ?
+                    '':
+                    `Found ${this.props.totalItems} results` 
+                }</h3>
+                
+                <CardsContainer {...this.props}/>  
+                
                 {this.props.totalItems > 30 && this.props.totalItems > this.props.index ?  
-                    <button onMouseUp={this.props.onLoadMoreBtnClick} className="btn main__btn">Load more</button> : 
-                    ''
+                <button onMouseUp={this.props.onLoadMoreBtnClick} className="btn main__btn">Load more</button> : 
+                ''
                 }
             </>
         )
-        
     }
 }
 

@@ -8,7 +8,7 @@ class Card extends Component{
 
     render(){       
         return (
-            <div className="book-card" id={this.props.book.id} onMouseUp={this.handleClick}>
+            <div className="book-card" id={this.props.book.etag} onMouseUp={this.handleClick}>
             <img className="book-card__image" alt="book cover" src={
                 this.props.book.volumeInfo &&
                 this.props.book.volumeInfo.imageLinks  ? 
@@ -25,7 +25,7 @@ class Card extends Component{
                     <h3 className="book-card__name">{this.props.book.volumeInfo.title}</h3>
                     <p className="book-card__author">{
                         this.props.book.volumeInfo.authors ? 
-                        this.props.book.volumeInfo.authors.reduce((str, autor)=>{return str + ', ' + autor}) : 
+                        this.props.book.volumeInfo.authors.reduce((str, autor)=> str+', '+autor) : 
                         ''
                     }
                     </p>
