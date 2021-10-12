@@ -1,0 +1,7 @@
+.books-list{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 282px);
+    grid-gap: 20px 20px;
+    justify-content: center;
+}

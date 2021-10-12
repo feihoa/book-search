@@ -1,0 +1,7 @@
+.book-card__description{
+    width: 100%;
+    color:black;
+    background: white;
+    min-height:50%;
+    margin-bottom: 20px;
+}

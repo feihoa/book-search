@@ -1,0 +1,14 @@
+.header__input-btn{
+    position: absolute;
+    padding: 11px;
+    top: 0;
+    right: 14%;
+    display: inline-flex;
+    background: transparent;
+}
+  
+@media screen and (max-width: 374px) {
+    .header__input-btn {
+      right: 15px;
+    }
+  }

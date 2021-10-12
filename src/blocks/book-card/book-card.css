@@ -1,0 +1,15 @@
+@import url(./__image/book-card__image.css);
+@import url(./__description/book-card__description.css);
+@import url(./__category/book-card__category.css);
+@import url(./__author/book-card__author.css);
+@import url(./__details/book-card__details.css);
+
+.book-card{
+    width: 282px;
+    background-color: rgba(234, 229, 219, 0.6);
+    border-radius: 10px;
+    min-height: 360px;
+    padding: 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+}

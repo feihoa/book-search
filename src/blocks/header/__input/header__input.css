@@ -1,0 +1,19 @@
+.header__input{
+    width: 70%;
+    padding: 10px 5px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin-bottom: 35px;
+}
+
+.header__input:focus{
+    border:none;
+    outline:none;
+}
+
+@media screen and (max-width: 374px) {
+    .header__input {
+      width: 90%;
+    }
+  }

@@ -1,0 +1,18 @@
+@import url(./__img-container/book-info__img-container.css);
+@import url(./__img/book-info__img.css);
+@import url(./__details/book-info__details.css);
+
+.book-info{
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+@media screen and (max-width: 535px) {
+    .book-info {
+        display: block;
+    }
+  }
