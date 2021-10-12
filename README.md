@@ -9,6 +9,7 @@ Google Books API
 
 # Docker:
 docker build -t book-search . 
+
 docker run -d --rm -it --name web -p 3000:3000 book-search
 
 # Getting Started with Create React App
