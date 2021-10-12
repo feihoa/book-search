@@ -29,6 +29,7 @@ import BookInfo from './BookInfo';
 class App extends Component {
 
   clearRequest(req){
+     // eslint-disable-next-line
     return (req.replace(/[<>\/#$%\^\*;{}=\_`~+&]/g," ")).trim();
   }
 
@@ -117,8 +118,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {  
-console.log(state)
-console.log("state")
   return {
     isSearch: state.books.isSearched,
     isFetch: state.books.isFetching,

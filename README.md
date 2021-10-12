@@ -1,3 +1,16 @@
+# Тестовое задание
+Сервис поиска книг
+
+# gh-pages:
+https://feihoa.github.io/book-search/
+
+# api:
+Google Books API
+
+# Docker:
+docker build -t book-search . 
+docker run -d --rm -it --name web -p 3000:3000 book-search
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

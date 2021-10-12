@@ -4,7 +4,6 @@ import Card from './Card';
 class CardsContainer extends Component {
 
     render(){
-console.log(this.props.books)
         return(
             <div className="main__cards-container">
                 <div id="booksList" className="books-list root__section">
