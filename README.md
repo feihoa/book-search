@@ -12,6 +12,11 @@ docker build -t book-search .
 
 docker run -d --rm -it --name web -p 3000:3000 book-search
 
+# Docker prod:
+docker build -f Dockerfile.prod -t book-search:prod .
+
+docker run -it --rm -p 3000:80 book-search:prod  
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
